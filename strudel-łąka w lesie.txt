@@ -8,6 +8,7 @@ $: s("[<bd sd bd [sd pause sd sd]> <oh hh hh2 oh oh3 hh>]2")
   .rev()
   .delay(0.66)
   .stretch("0 .1 .2 .3 .4 .3 .2 .1")
+  //.bp(slider(1570.75,50,4000))
   //.stretch(slider(0,0,4))
 
 
@@ -37,3 +38,4 @@ $: n("0 <4 6> <2 2 3 2 7> -").scale("A3:major")
   .dec(.3)
   .hp(300)
   .pan("<.5 .8 1 .7 .9>") 
+
