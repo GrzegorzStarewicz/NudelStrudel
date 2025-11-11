@@ -1,0 +1,34 @@
+// @title tb bass smth
+// @by meyrter
+
+$: s("tb - tb tb - [tb tb] -  <- tb>")
+  .bank("alesissr16")
+  .slow(2)
+  .fast(3)
+  .echo(3, 1/3, .2)
+  .postgain(.5)
+
+$: s("rim perc [- rim] <[perc perc] perc>")
+  .bank("alesishr16")
+  .slow(2)
+  .fast(3)
+  .hp("3000")
+
+$: s("bd hh sd hh <bd [bd hh]> hh <[hh sd] sd> hh")
+  .bank("alesissr16")
+  .slow(4)
+  .fast(3)
+
+$: n("[1 5 3] [1 4] [4 - 4] [1 3]")
+  .s("gm_woodblock")
+  .slow(2)
+
+$: n("1 [1 -] 8 1")
+  .s("z_sine")
+  .slow(4)
+  .fast(3)
+  .dec(.1)
+  .scale("C2:major")
+  .chop("<4 4 2 6 1>")
+  .postgain("<.8 1 .8>")
+  .sometimes(x=>x.postgain(".5"))
