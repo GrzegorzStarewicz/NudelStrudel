@@ -1,0 +1,45 @@
+//@title jaju
+//@by meyrter
+
+$: s("[bd]*2, cp/2, [<- hh> <hh <[oh hh] oh [oh cr]>> <hh -> hh]")
+  .bank("tr909")
+  //.coarse(2)
+  .attack(.8)
+  .room(.5)
+  .clip(.8)
+
+
+
+$: n("<1 1 1 1 1 3 0>, <[8 6]*6 1>").scale("A4:major")
+  .s("gm_lead_8_bass_lead")
+  .decay(2)
+  .chop("<1 1 4 1 1 6>")
+  .attack("<0 0 [0 1 1 1]>")
+  .lp(slider(609.3,50,6000))
+  .postgain(slider(0.02,0,1,.01))
+
+$: n("[<- 1 - 0 - 1 - [6*4 7]>]/2*3").scale("A1:major")
+  .s("gm_lead_8_bass_lead")
+  .decay("[<2 1 1.5 3>]/4")
+  .chop("<1 1 4 1 1 6>")
+  .attack("<0 0 [0 1 1 1]>")
+  .lp(100)
+  .postgain(slider(0.94,0,1))
+
+$: s("[<- hh> <hh [oh -]> <hh -> hh]")
+  .bank("compurhythm8000")
+  .postgain(slider(0.419,0,1))
+
+$: s("[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
+  .bank("compurhythm8000")
+  .postgain(slider(1,0,1))
+  .lp(600)
+
+//$: s("[<- hh> <hh [oh -]> <hh -> hh],[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
+  //.bank("compurhythm8000")
+  //.postgain(slider(0,0,1))
+
+$: s("[bd]*2,cp/2")
+  .echo(4,"<.333 .333 .25 .333 .08333>",slider(0,0,1))
+  .lp(slider(109.5,50,6000))
+  .postgain(slider(0.648,0,1))
