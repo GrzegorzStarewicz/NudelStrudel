@@ -1,22 +1,34 @@
 //@title jaju
 //@by meyrter
+//@from 19.11.25
+//@to 27.11.2025
 
-$: s("[bd]*2, cp/2, [<- hh> <hh <[oh hh] oh [oh cr]>> <hh -> hh]")
+$: s("[bd]*2, cp/2, [<- hh> <[hh <- hh> hh] <[oh:2 - hh] oh:2 [oh:2 rd:2 rd:2]>> <hh -> [hh - <hh ->]]")
   .bank("tr909")
   //.coarse(2)
-  .attack(.8)
-  .room(.5)
-  .clip(.8)
+  .attack(slider(0,0,1,.02))
+  .dec(slider(0,0,.5,.02))
+  //.room(.5)
+  .postgain(slider(3,0,3,.05))
+  //.clip(.8)
+  //.clip(.01)
 
 
 
-$: n("<1 1 1 1 1 3 0>, <[8 6]*6 1>").scale("A4:major")
+$: n("<1 1 1 1 1 <3 4> <0 0 2>>, <[<8 8 8 9> <6 6 7>]*6 1>").scale("A4:major")
   .s("gm_lead_8_bass_lead")
   .decay(2)
   .chop("<1 1 4 1 1 6>")
   .attack("<0 0 [0 1 1 1]>")
-  .lp(slider(609.3,50,6000))
-  .postgain(slider(0.02,0,1,.01))
+  .lp(slider(4572,50,6000))
+  .postgain(slider(0.25,0,1,.01))
+
+$: n("[<3 1 3 2> <5 0 5 7> <2 2 2 4>]/3").scale("A4:major")
+  .s("gm_lead_8_bass_lead")
+  .decay(slider(0.5,0,1,.02))
+  .chop(6)
+  .lp(slider(608,50,6000,1))
+  .postgain(slider(0.7,0,3,.05))
 
 $: n("[<- 1 - 0 - 1 - [6*4 7]>]/2*3").scale("A1:major")
   .s("gm_lead_8_bass_lead")
@@ -26,13 +38,15 @@ $: n("[<- 1 - 0 - 1 - [6*4 7]>]/2*3").scale("A1:major")
   .lp(100)
   .postgain(slider(0.94,0,1))
 
-$: s("[<- hh> <hh [oh -]> <hh -> hh]")
+$: s("[<- hh> <hh [oh -]> hh hh]")
   .bank("compurhythm8000")
-  .postgain(slider(0.419,0,1))
+  .dec(slider(0.44,0,1,.02))
+  .echo(2,1/3,.6)
+  .postgain(slider(0.19,0,1))
 
 $: s("[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
   .bank("compurhythm8000")
-  .postgain(slider(1,0,1))
+  .postgain(slider(1.695,0,3))
   .lp(600)
 
 //$: s("[<- hh> <hh [oh -]> <hh -> hh],[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
@@ -42,4 +56,4 @@ $: s("[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
 $: s("[bd]*2,cp/2")
   .echo(4,"<.333 .333 .25 .333 .08333>",slider(0,0,1))
   .lp(slider(109.5,50,6000))
-  .postgain(slider(0.648,0,1))
+  .postgain(slider(0.419,0,1))
