@@ -1,5 +1,6 @@
 // @title final circus
 // @by meyrter
+// @from 29.11.2025
 
 $: s("[bd bd sd [hh -] [rim hh] [bd bd] sd [rim - hh]]")
   //.dec(.3)
