@@ -1,0 +1,41 @@
+// @title final circus
+// @by meyrter
+
+$: s("[bd bd sd [hh -] [rim hh] [bd bd] sd [rim - hh]]")
+  //.dec(.3)
+  //.bank("9000")
+  //.bank("rolandtr808")
+  .bank("circuitsdrumtracks")
+  .postgain(slider(0.34,0,1,.02))
+  //.jux(rev)
+  //.jux(press)
+  .iter(4)
+  .jux(iterback(4))
+  
+
+$: s("[perc:2 tb hh perc:7]")
+  .bank("rolandr8")
+  //.jux(rev)
+  .jux(fast(2))
+  .postgain(slider(0.7,0,1,.02))
+
+$: n("<1 1 5 3>").slow(1).scale("A3:minor")
+  .s("bytebeat:4")
+  .echo(3,1/4,slider(0.74,0,1,.02))
+  .juxby(slider(1,0,1,.02),echo(3,1/6,slider(0.78,0,1,.02)))
+  //.spread(slider(1,0,1,.02))
+  .chop(2)
+  .dec(1.2)
+  .postgain(slider(0.1,0,1,.02))
+
+$: n("<0 0 3 3 5 5 2 1>").scale("A2:minor").fast(2).s("bytebeat")
+  .dec(slider(0.16,0,1,.02))
+  .jux(echo(4,1/16,.8))
+  .postgain(slider(0.62,0,1,.02))
+
+$: n("<0 3 5 1>").slow(4).scale("A0:minor").s("gm_lead_8_bass_lead")
+  //.attack(2)
+  .chop(8)
+  .dec(slider(1.56,0,2,.02))
+  .postgain(slider(2.66,0,3,.07))
+  
