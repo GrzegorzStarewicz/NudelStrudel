@@ -1,0 +1,90 @@
+//@title jaju
+//@by meyrter
+//@from 19.11.25
+//@to 16.12.2025
+
+
+//    techy DRUMS
+$: s("[bd]*2, cp/1.5, [<- hh> <[hh <- hh> hh] <[oh:2 - hh] oh:2 [oh:2 rd:2 rd:2]>> <hh -> [hh - <hh ->]]")
+  .bank("tr909")
+  //.coarse(2)
+  .attack(slider(0,0,1,.02))
+  .dec(slider(0.02,0,.5,.02))
+  //.room(.5)
+  .postgain(slider(0.15,0,3,.05))
+  .sometimesBy(slider(0.2,0,1,.1),x => x.jux(press))
+  //.clip(.8)
+  //.clip(.01)
+
+
+//    synth LEAD
+$: n("<1 1 1 1 1 <3 4> <0 0 2>>, <[<8 8 8 9> <6 6 7>]*6 1>").scale("A4:major")
+  .s("gm_lead_8_bass_lead")
+  .decay(slider(2,0,2,.1))
+  .chop("<1 1 4 1 1 6>")
+  .attack("<0 0 [0 1 1 1]>")
+  .hp(slider(1478,50,6000))
+  .lp(slider(1721.95,50,6000))
+  .postgain(slider(0.21,0,1,.01))
+  //.stretch("<.01 0 0 0 0 0 .01 0 0 .01 0 0 0>*2")
+  .sometimesBy(slider(0.7,0,1,.1),x=>x.stretch(.01))
+  .sometimesBy(slider(0.6,0,1,.1),x=>x.stretch(.02))
+  .sometimesBy(slider(0.5,0,1,.1),y=>y.gain(.02))
+
+  .sometimesBy(slider(0.3,0,1,.05),x=>x.jux(rev))
+
+
+//    vibra choppy LEAD
+$: n("[<3 1 3 2> <5 0 5 7> <2 2 2 4>]/3").scale("A4:major")
+  .s("gm_lead_8_bass_lead")
+  .decay(slider(0.22,0,1,.02))
+  //.chop(slider(1,1,12,1))
+  .sometimesBy(slider(0.5,0,1,.1),x=>x.chop(3))
+  .sometimesBy(slider(0.2,0,1,.1),x=>x.chop(2))
+  .sometimesBy(slider(0.15,0,1,.05),x=>x.chop(3))
+
+  .sometimesBy(slider(0.5,0,1,.05),x=>x.jux(pressBy(slider(0.1,0,.5,.1))))
+  
+  .echo(6,slider(0.5831,0,1,.0833),slider(0.7,0,1,.05))
+  .hp(slider(50,50,6000))
+  .lp(slider(484,50,6000,1))
+  .postgain(slider(0.7,0,3,.05))
+
+
+//    BASS
+$: n("[<- 1 - 0 - 1 - [6*4 7]>]/2*3").scale("A1:major")
+  .s("gm_lead_8_bass_lead")
+  .decay("[<2 1 1.5 3>]/4")
+  .chop("<1 1 4 1 1 6>")
+  .attack("<0 0 [0 1 1 1]>")
+  .lp(100)
+  .postgain(slider(0.94,0,1))
+
+
+//   rhythmic HIHATS (clock)
+$: s("[<- hh> <hh [oh -]> hh hh]")
+  .bank("compurhythm8000")
+  .dec(slider(0.02,0.02,1,.02))
+  .echo(2,1/3,.6)
+  .postgain(slider(0.232,0,1))
+
+
+//   lp bg delicate HIHATS
+$: s("[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
+  .bank("compurhythm8000")
+  .postgain(slider(1.257,0,3))
+  .lp(600)
+
+
+//   LOW KICK
+$: s("[bd]*2,cp/2")
+  .echo(4,"<.333 .333 .25 .333 .08333>",slider(0,0,1))
+  .lp(slider(109.5,50,6000))
+  .postgain(slider(0,0,1))
+
+
+//$: s("[<- hh> <hh [oh -]> <hh -> hh],[<- hh> <[hh hh] <oh cr oh*2 hh*2>> [hh -  - <hh hh hh [hh - - hh hh]>]]")
+  //.bank("compurhythm8000")
+  //.postgain(slider(0,0,1))
+
+
