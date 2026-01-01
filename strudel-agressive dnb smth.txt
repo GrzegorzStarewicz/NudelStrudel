@@ -3,21 +3,27 @@
 // @from 11.11.2025
 // @to 19.12.2025
 
+//    TECHY DRUMS
 $: s("[<bd sd mt bd mt> [<bd cb> <hh oh [hh hh] [hh oh - hh]>]][perc perc <perc cb> <perc [sd sd] [sd mt]>]")
   .bank("9000")
   .echo(slider(4,1,14,1),slider(0.498,.166,1,.166),slider(0.7,0,1,.1))
-  .postgain(slider(0,0,1,.07))
-  .dec(slider(0.02,0,1,.02))
-  .sometimesBy(slider(0.1,0,1,.1),x=>x.juxBy(slider(0.7,0,1,.1),press))
+  .postgain(slider(0.49,0,1,.07))
+  .dec(slider(0.04,0,1,.02))
+  .sometimesBy(slider(0.2,0,1,.1),x=>x.juxBy(slider(0.7,0,1,.1),press))
+  .slow(slider(2,1,4,1))
 
+//     SLOW REV GONG
 $: s("[rd <rd tb> <rd tb> <rd [sd sd] rd>]")
   .bank("9000")
   .room(5)
   .dec(slider(0.04,0,1,.02))
   .chop(100)
   .pan("<0 .2 .4 .6 .8 .6 .3 .1 0>*8")
-  .postgain(slider(0,0,1,.07))
+  .postgain(slider(0.21,0,1,.07))
+  .lp((slider(2424,30,12000)))
+  .slow(slider(2,1,4,1))
 
+//     RHYTHMIC HH
 $: s("[hh <hh hh*2> oh hh <hh [oh hh]> hh <oh hh> hh*2]")
   .bank("ace")
   .cut(1)
@@ -25,37 +31,50 @@ $: s("[hh <hh hh*2> oh hh <hh [oh hh]> hh <oh hh> hh*2]")
   .sometimes(x=>x.rev())
   //.bp(slider(1710,400,8000,10))
   //.pan("<0 1>*8")
-  .postgain(slider(0,0,2,.07))
+  .lp((slider(2424,30,12000)))
+  .postgain(slider(1.96,0,2,.07))
+  .slow(slider(3,1,4,1))
 
+//      STRONG BD SD
 //$: s("[<bd bd [bd bd]> <bd sd> <sd bd> <bd sd bd [bd bd] sd>]")
 $: s("[<bd> <sd> <bd> <bd>]")
   .bank("9000")
   .iter(4)
-  .postgain(slider(0.64,0,2,.02))
-  .lp((slider(389.1,30,12000)))
+  .postgain(slider(1.36,0,2,.02))
+  .lp((slider(10132.68,30,12000)))
+  .slow(slider(2,1,4,1))
 
+//      FLUTE LEAD / xylo
+$: n("5 3 7 4").scale("A4:major").slow(slider(3,1,4,1))
+  .s("gm_xylophone").s("gm_flute")
+  .echo(3, slider(0.332,.166,1,.166),slider(0.7,0,1,.1))
+  .postgain(slider(0,0,1,.07))
 
+//      SYNTH PLUCK
 $: n("1 1 <5 3> 1").scale("A3:major")
   .s("bytebeat")
   .decay(slider(0.14,0,1,.02))
   .echo(8,1/3,.6)
   .fast(slider(1,1,4,.25))
-  .postgain(slider(0.14,0,1,.07))
+  .postgain(slider(0.56,0,1,.07))
 
+//      HARSH LEAD
 $: n("2 <2 2 2 6> <3 2> <2 2 1>").scale("A4:major")
   .s("bytebeat")
   .slow(slider(2,1,4,1))
-  .attack(slider(0.472,0,1))
-  .hp((slider(6230,0,16000,10)))
+  .attack(slider(0,0,1))
+  .hp((slider(0,0,16000,10)))
   .lp((slider(7750,0,16000,10)))
   .postgain(slider(0,0,1,.02))
 
+//      SYNTH BASS
 $: n("1 <1 1 -3> <3 5 3 5 3 -5> <- - 1 2>").scale("A1:major")
   .s("bytebeat")
   .slow(slider(4,1,4,1))
   .postgain(slider(1.05,0,2,.07))
   .lp((slider(200,30,16000,10)))
 
+//      HIGH LEAD / ATMOSPHERICS
 $: n("1 4 <3 5> <2 3 2 2 1>").scale("A5:major")
   .s("gm_lead_1_square")
   .slow(slider(2,1,8,1))
@@ -63,7 +82,7 @@ $: n("1 4 <3 5> <2 3 2 2 1>").scale("A5:major")
   .lp((slider(7460,30,16000,10)))
   .dec(slider(3,0,3,.1))
   .att(slider(0,0,3,.1))
-  .postgain(slider(0.98,0,1,.07))
+  .postgain(slider(0,0,1,.07))
 
   
 
