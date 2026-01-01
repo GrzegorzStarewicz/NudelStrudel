@@ -1,0 +1,17 @@
+// @title ba
+// @by meyrter
+// @from 1.12.2026
+
+$: s("[bd - rim  bd - rim  bd rim rim  bd - rim]").fast(4)
+  .bank("tr808")
+  .dec(slider(0.0033175,0.0001,0.01))
+  .bp(slider(2560,50,4000,1)).bpa(.2)
+  .echoWith(4, 1/9, (p,n) => p.stretch(n*3))
+  .degradeBy(slider(0.92,0,1,.02))
+  .juxBy(slider(0.56,0,1,.02),press)
+  //.release(slider(0,0,4,.1))
+  .sustain(slider(0,0,4,.1))
+  .sometimes(x=>x.sustain(1))
+  
+
+
